@@ -1,4 +1,3 @@
-// src/routes/faturaRoutes.js
 import express from 'express';
 import { Invoice } from '../controllers/Invoices';
 import { invoices } from '../utils/pdf-reading';
@@ -13,7 +12,7 @@ router.post('/create', async (_, res) => {
         const result = await invoice.create(invoices);
         res.status(201).json(result);
     } catch (error) {
-        res.status(500).json({ error: 'Erro interno do servidor' });
+        res.status(500).json({ error: 'Internal error' });
     }
 });
 
@@ -23,7 +22,7 @@ router.get('/:customerID', async (req, res) => {
         const result = await invoice.getByCustomerID(req.params.customerID);
         res.status(200).json(result);
     } catch (error) {
-        res.status(500).json({ error: 'Erro interno do servidor' });
+        res.status(500).json({ error: 'Internal error' });
     }
 });
 
@@ -33,7 +32,7 @@ router.get('/', async (_, res) => {
         const result = await invoice.getAll()
         res.status(200).json(result);
     } catch (error) {
-        res.status(500).json({ error: 'Erro interno do servidor' });
+        res.status(500).json({ error: 'Internal error' });
     }
 })
 
@@ -41,8 +40,6 @@ router.get('/', async (_, res) => {
 router.post('/download/', async (req, res) => {
     const invoice = new Invoice();
     const { customerId, referenceMonth } = req.body
-
-    console.log(customerId, referenceMonth);
 
     try {
         const result = await invoice.getFileDownload(customerId, referenceMonth);

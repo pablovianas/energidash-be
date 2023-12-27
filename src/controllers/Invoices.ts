@@ -21,11 +21,11 @@ class Invoice {
                     }
                 })
             })
-            console.log('Faturas criadas')
+            console.log('Invoices created successfully');
         } catch (error) {
             console.log(error);
         }finally{
-            await prisma.$disconnect()
+            await prisma.$disconnect();
         }
 
     }
@@ -40,18 +40,18 @@ class Invoice {
         } catch (error) {
             console.log(error);
         }finally{
-            await prisma.$disconnect()
+            await prisma.$disconnect();
         }
     }
 
     async getAll(){
         try {
-            const result = await prisma.invoice.findMany()
+            const result = await prisma.invoice.findMany();
             return result
         } catch (error) {
             console.log(error);
         }finally{
-            await prisma.$disconnect()
+            await prisma.$disconnect();
         }
     }
 
