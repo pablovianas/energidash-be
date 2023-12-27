@@ -31,11 +31,8 @@ const invoices: Invoices[] = [];
 
 function readPDF (){
 
-    const isProduction = process.env.NODE_ENV === 'production';
-
-    const invoicesFolder = isProduction
-        ? path.join(__dirname, '../', './public/faturas')
-        : path.join(__dirname, '../../', './public/faturas');
+    const invoicesFolder = path.join(__dirname, '../', './public/faturas')
+    
 
     const PDFFiles = fs.readdirSync(invoicesFolder)
         .filter(file => file.toLowerCase().endsWith('.pdf'));
