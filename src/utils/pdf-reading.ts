@@ -34,7 +34,7 @@ function readPDF (){
     const isProduction = process.env.NODE_ENV === 'production';
 
     const invoicesFolder = isProduction
-        ? path.join('./public/faturas')
+        ? path.join('./dist/public/faturas')
         : path.join(__dirname, '../../', './public/faturas');
 
     const PDFFiles = fs.readdirSync(invoicesFolder)
