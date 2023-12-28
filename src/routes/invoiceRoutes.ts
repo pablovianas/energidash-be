@@ -56,7 +56,11 @@ router.post('/download/', async (req, res) => {
 
 router.get('/download/:filename', async (req, res) => {
     const fileName = req.params.filename;
-    const directoryPath = path.join(__dirname, '../../public/faturas');
+
+    const isProduction = process.env.NODE_ENV === 'production';
+
+    const directoryPath = isProduction ? path.join(__dirname, './public/faturas') : path.join(__dirname, '../../public/faturas');
+
     res.download(directoryPath + '/' + fileName, fileName, (err) => {
         if (err) {
             console.log(err);

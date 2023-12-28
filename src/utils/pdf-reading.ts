@@ -34,7 +34,7 @@ function readPDF (){
     const isProduction = process.env.NODE_ENV === 'production';
 
     const invoicesFolder = isProduction
-        ? path.join(__dirname,'/public/faturas')
+        ? path.join(__dirname,' ./public/faturas')
         : path.join(__dirname, '../../', './public/faturas');
 
     console.log(invoicesFolder);
