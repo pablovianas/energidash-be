@@ -3,7 +3,6 @@ import fs from 'fs';
 import pdfParse from "pdf-parse";
 import { extractInformations } from './extract-text';
 
-
 type PDFData = {
     text: string
 }
@@ -37,8 +36,6 @@ function readPDF (){
         ? path.join(__dirname, './public/faturas')
         : path.join(__dirname, '../../', './public/faturas');
 
-    console.log(invoicesFolder);
-
     const PDFFiles = fs.readdirSync(invoicesFolder)
         .filter(file => file.toLowerCase().endsWith('.pdf'));
 
@@ -50,15 +47,9 @@ function readPDF (){
         pdfParse(pdfFile).then(function (data: PDFData) {
             const extractedInformations = extractInformations(data.text.split('\n'));
             invoices.push(extractedInformations)
-
         });
 
     })
-
-
-    setTimeout(() => {
-        console.log(invoices)
-    }, 3000)
 }
 
 
